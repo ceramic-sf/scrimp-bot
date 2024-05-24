@@ -253,6 +253,7 @@ Driver:
     - `reference_voltage = max_current * 1.41 = 1.0V`
     - Initially 0.8A was used (stepper datasheet), but was too hot.
 
+See [scrimp_bot_wiring.md](./scrimp_bot_wiring.md) for a wiring diagram of all connections for electronics.
 
 
 ## Findings
