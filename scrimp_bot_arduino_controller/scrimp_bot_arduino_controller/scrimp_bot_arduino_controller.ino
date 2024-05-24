@@ -18,7 +18,7 @@ const int MAX_STEPS_PER_SECOND = STEPS_PER_REVOLUTION * MAX_REVS_PER_SECOND;
 const int MIN_SLIDER = 710;
 const int MAX_SLIDER = 1023;
 const int MID_SLIDER = 830;
-const int STOP_ZONE = 70;
+const int STOP_ZONE = 90;
 
 // REVERSE flags. Useful if motors are wired differently.
 const bool REVERSE_RightLower = false;
@@ -52,7 +52,7 @@ void loop() {
     int sliderValue = analogRead(analogPin);
     float velocity = sliderToVelocity(sliderValue);
     setStepperVelocity(i, velocity);
-    runStepper(i);
+    runStepper(i, velocity);
   }
 }
 
@@ -128,9 +128,15 @@ void setStepperVelocity(int stepperIndex, float motorRevsPerSec) {
   stepper->setSpeed(stepsPerSecond);
 }
 
-// Move a stepper toward
-void runStepper(int index) {
+// Move a stepper 
+void runStepper(int index, float velocity) {
   AccelStepper* stepper = stepperFromIndex(index);
   if (!stepper) return;
-  stepper->runSpeed();
+  if (velocity == 0) {
+    stepper->disableOutputs(); // Disable holding current
+  } else {
+    stepper->enableOutputs(); // Enable outputs if there is a velocity
+    stepper->runSpeed();
+  }
 }
+
