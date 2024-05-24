@@ -5,14 +5,14 @@ Make a bot from what you've got
 
 A cheap but useable arm made from convenient parts.
 
-
   - [Goal](#goal)
   - [Rationale](#rationale)
-  - [Parts](#parts)
-  - [Form](#form)
-  - [Flexible](#flexible)
-  - [Control](#control)
-  - [Motion](#motion)
+  - [Roller screw technology](#roller-screw-technology)
+  - [Parts list](#parts-list)
+  - [Simple form](#simple-form)
+  - [Scrimp friendly](#scrimp-friendly)
+  - [How control works](#how-control-works)
+  - [How the muscle works](#how-the-muscle-works)
   - [Gearing](#gearing)
   - [Muscle module force](#muscle-module-force)
   - [Arm torque](#arm-torque)
@@ -20,6 +20,7 @@ A cheap but useable arm made from convenient parts.
   - [Stepper and driver](#stepper-and-driver)
   - [Findings](#findings)
   - [Improvements](#improvements)
+  - [Brains](#brains)
 
 
 ## Goal
