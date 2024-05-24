@@ -1,11 +1,10 @@
 # scrimp-bot
 Make a bot from what you've got
 
-# Scrimp Bot
-
-A cheap but useable arm made from convenient parts.
+## Contents
 
   - [Goal](#goal)
+  - [Free hardware](#free-hardware)
   - [Rationale](#rationale)
   - [Roller screw technology](#roller-screw-technology)
   - [Parts list](#parts-list)
@@ -25,7 +24,11 @@ A cheap but useable arm made from convenient parts.
 
 ## Goal
 
-For about 100 USD, build an arm that can lift regular objects around in a normal regular working space.
+For about 100 USD, build an arm that can lift regular objects around in a regular working space.
+
+## Free hardware
+
+Scrimpbot is free and open hardware, please enjoy.
 
 ## Rationale
 
