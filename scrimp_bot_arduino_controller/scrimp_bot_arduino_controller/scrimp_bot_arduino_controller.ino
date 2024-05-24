@@ -1,9 +1,9 @@
 #include <AccelStepper.h>
 
-// Initialize the stepper library
-AccelStepper myStepperA(AccelStepper::DRIVER, 3, 2); // step, direction
-AccelStepper myStepperB(AccelStepper::DRIVER, 5, 4);
-AccelStepper stepperRightLower(AccelStepper::DRIVER, 7, 6);
+// Initialize the stepper library. Specify two digital pins per driver.
+AccelStepper stepperRightlower(AccelStepper::DRIVER, 3, 2); // step, direction
+AccelStepper stepperLeftUpper(AccelStepper::DRIVER, 5, 4);
+AccelStepper stepperLeftLower(AccelStepper::DRIVER, 7, 6);
 AccelStepper stepperClaw(AccelStepper::DRIVER, 9, 8);
 AccelStepper stepperRightUpper(AccelStepper::DRIVER, 11, 10);
 
@@ -20,6 +20,21 @@ const int MAX_SLIDER = 1023;
 const int MID_SLIDER = 830;
 const int STOP_ZONE = 70;
 
+// REVERSE flags. Useful if motors are wired differently.
+const bool REVERSE_RightLower = false;
+const bool REVERSE_LeftLower = true;
+const bool REVERSE_LeftUpper = false;
+const bool REVERSE_RightUpper = true;
+const bool REVERSE_Claw = true;
+
+// Which analog pin is used for potentiometers.
+const int ANALOG_RightLower = 2;
+const int ANALOG_LeftLower = 1;
+const int ANALOG_LeftUpper = 3;
+const int ANALOG_RightUpper = 4;
+const int ANALOG_Claw = 5;
+
+
 void setup() {
   for (int i = 0; i < 5; i++) {
       initStepper(i);
@@ -31,8 +46,10 @@ void loop() {
   // Read analog values and calculate motions
 
   for (int i = 0; i < 5; i++) {
+    // Get the analog pin for the current stepper
+    int analogPin = AnalogPinFromIndex(i);
     // Pins A1-A5 are used.
-    int sliderValue = analogRead(A1 + i);
+    int sliderValue = analogRead(analogPin);
     float velocity = sliderToVelocity(sliderValue);
     setStepperVelocity(i, velocity);
     runStepper(i);
@@ -58,12 +75,36 @@ float sliderToVelocity(int sliderValue) {
 // Function to return a pointer to the corresponding stepper based on the index
 AccelStepper* stepperFromIndex(int index) {
   switch (index) {
-    case 0: return &myStepperA;
-    case 1: return &stepperRightLower;
-    case 2: return &myStepperB;
+    case 0: return &stepperRightlower;
+    case 1: return &stepperLeftLower;
+    case 2: return &stepperLeftUpper;
     case 3: return &stepperRightUpper;
     case 4: return &stepperClaw;
     default: return nullptr; // Return null if the index is out of bounds
+  }
+}
+
+// Function to return the REVERSE flag for the corresponding stepper based on the index
+bool ReverseFromIndex(int index) {
+  switch (index) {
+    case 0: return REVERSE_RightLower;
+    case 1: return REVERSE_LeftLower;
+    case 2: return REVERSE_LeftUpper;
+    case 3: return REVERSE_RightUpper;
+    case 4: return REVERSE_Claw;
+    default: return true; // Default to true if the index is out of bounds
+  }
+}
+
+// Function to return the analog pin for the corresponding stepper based on the index
+int AnalogPinFromIndex(int index) {
+  switch (index) {
+    case 0: return ANALOG_RightLower;
+    case 1: return ANALOG_LeftLower;
+    case 2: return ANALOG_LeftUpper;
+    case 3: return ANALOG_RightUpper;
+    case 4: return ANALOG_Claw;
+    default: return -1; // Default if the index is out of bounds
   }
 }
 
@@ -79,6 +120,10 @@ void initStepper(int index) {
 void setStepperVelocity(int stepperIndex, float motorRevsPerSec) {
   AccelStepper* stepper = stepperFromIndex(stepperIndex);
   if (!stepper) return;
+  bool REVERSE = ReverseFromIndex(stepperIndex);
+  if (!REVERSE) {
+    motorRevsPerSec = -motorRevsPerSec;
+  }
   float stepsPerSecond = motorRevsPerSec * STEPS_PER_REVOLUTION;
   stepper->setSpeed(stepsPerSecond);
 }
