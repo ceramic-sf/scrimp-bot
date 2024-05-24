@@ -5,13 +5,13 @@ AccelStepper myStepperA(AccelStepper::DRIVER, 3, 2); // step, direction
 AccelStepper myStepperB(AccelStepper::DRIVER, 5, 4);
 AccelStepper stepperRightLower(AccelStepper::DRIVER, 7, 6);
 AccelStepper stepperClaw(AccelStepper::DRIVER, 9, 8);
-AccelStepper stepperRightUpper(AccelStepper::DRIVER, 11, 10); 
+AccelStepper stepperRightUpper(AccelStepper::DRIVER, 11, 10);
 
 // Stepper properties
 const float DRIVER_MICROSTEPPING = 0.5; // E.g., 1/2 = 0.5
-const int STEPS_PER_REVOLUTION = 200 / DRIVER_MICROSTEPPING;  
+const int STEPS_PER_REVOLUTION = 200 / DRIVER_MICROSTEPPING;
 
-const int MAX_REVS_PER_SECOND = 3; 
+const int MAX_REVS_PER_SECOND = 3;
 const int MAX_STEPS_PER_SECOND = STEPS_PER_REVOLUTION * MAX_REVS_PER_SECOND;
 
 // Slider potentiometers
@@ -29,7 +29,7 @@ void setup() {
 
 void loop() {
   // Read analog values and calculate motions
-  
+
   for (int i = 0; i < 5; i++) {
     // Pins A1-A5 are used.
     int sliderValue = analogRead(A1 + i);
@@ -70,7 +70,7 @@ AccelStepper* stepperFromIndex(int index) {
 // Set up steppers
 void initStepper(int index) {
   AccelStepper* stepper = stepperFromIndex(index);
-  if (!stepper) return; 
+  if (!stepper) return;
   // Set the maximum speed in steps per second:
   stepper->setMaxSpeed(MAX_STEPS_PER_SECOND);
 }
@@ -78,14 +78,14 @@ void initStepper(int index) {
 // Move a stepper at some velocity
 void setStepperVelocity(int stepperIndex, float motorRevsPerSec) {
   AccelStepper* stepper = stepperFromIndex(stepperIndex);
-  if (!stepper) return;   
+  if (!stepper) return;
   float stepsPerSecond = motorRevsPerSec * STEPS_PER_REVOLUTION;
   stepper->setSpeed(stepsPerSecond);
 }
 
-// Move a stepper toward 
+// Move a stepper toward
 void runStepper(int index) {
   AccelStepper* stepper = stepperFromIndex(index);
   if (!stepper) return;
-  stepper->runSpeed();  
+  stepper->runSpeed();
 }
