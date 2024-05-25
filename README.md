@@ -122,6 +122,8 @@ The muscle module can fit any stepper size and length you have. The
 FreeCAD model uses paramater based design and updating stepper sizes in the
 CAD spreadsheet updates the physical model.
 
+To use the FreeCAD model, open the `./models/muscle_motor_assembly.FCStd` file. The Assembly4 workbench is used to bring together different parts.
+
 ## How control works
 
 Electronics go in a 3D printed box with some sliders that act as a remote control.
