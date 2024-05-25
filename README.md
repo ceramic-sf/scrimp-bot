@@ -38,6 +38,8 @@ For about 100 USD, build an arm that can lift regular objects around in a regula
 
 Scrimpbot is free and open hardware, please enjoy.
 
+![open hardware](./images/open_hardware.svg)
+
 ## Rationale
 
 Robotic foundation models will soon make smooth control of rickety robots trivial.
