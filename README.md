@@ -1,6 +1,14 @@
 # scrimp-bot
 Make a bot from what you've got
 
+Tier|Bot|Reason
+|-|-|-|
+|S||
+|A|scrimp bot | +Functional +Frugal -Fragile|
+|B||
+|C||
+|F||
+
 ## Contents
 
   - [Goal](#goal)
