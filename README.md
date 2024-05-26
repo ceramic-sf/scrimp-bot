@@ -1,11 +1,13 @@
 # scrimp-bot
 Make a bot from what you've got
 
+![movements](./media/movements.gif)
+
 Tier|Bot|Reason
 |-|-|-|
 |S||
-|A|scrimp bot | +Functional +Frugal -Fragile|
-|B||
+|A||
+|B|scrimp bot | +Functional +Frugal -Fragile -Fortissimo -Flawed|
 |C||
 |F||
 
@@ -38,7 +40,7 @@ For about 100 USD, build an arm that can lift regular objects around in a regula
 
 Scrimpbot is free and open hardware, please enjoy.
 
-![open hardware](./images/open_hardware.svg)
+![open hardware](./media/open_hardware.svg)
 
 ## Rationale
 
@@ -87,6 +89,8 @@ If you want to explore this mechanism, consider printing this vise I designed an
 
 [https://github.com/ceramic-sf/vice-vise/tree/main](https://github.com/ceramic-sf/vice-vise/tree/main)
 
+![up_down](./media/up_down.gif)
+
 ## Parts list
 
 One may have most of these around the house.
@@ -115,6 +119,8 @@ A mechanical muscle module that can lengthen and contract. Make multiple muscles
 The skeleton is wooden with some ball and socket joints.
 Two muscles acting together can make a single joint roll, pitch and yaw. Multiple
 joints allows for a large range of motion, similar to that of a human arm.
+
+![rear](./media/rear.jpg)
 
 ## Scrimp friendly
 
@@ -270,6 +276,8 @@ See [scrimp_bot_wiring.md](./scrimp_bot_wiring.md) for a wiring diagram of all c
 
 ## Findings
 
+![spin](./media/spin_quick.gif)
+
 It works, but some mods are in order.
 
 | Feature                              | Problem                                                                                       | Suggestion                                                          |
@@ -288,6 +296,7 @@ It works, but some mods are in order.
 | Stepper Motor Enclosure              | Enclosure obstructs heat dissipation, potentially causing PLA to melt.                        | Design the enclosure to improve heat dissipation.                   |
 | Noise Level                          | Mechanism is moderately noisy.                                                                | Seal and lubricate the mechanism to reduce noise.                   |
 
+![side](./media/side.jpg)
 
 ## Improvements
 
